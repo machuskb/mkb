@@ -1,6 +1,6 @@
 {
     'name': 'Purchase order multi lots selection',
-    'version': '14.1.1.1',
+    'version': '14.2.3.4',
     'category': 'Purchase Management',
     'summary': 'Purchase order multi lots selection',
     'description': """ Using this module you can create and select multiple lot in purchase order line .
@@ -11,7 +11,7 @@
     "email": 'apps@maisolutionsllc.com',
     "website":'http://maisolutionsllc.com/',
     'license': 'OPL-1',
-    'depends': ['stock'],
+    'depends': ['purchase_stock'],
     "live_test_url" : "",
     'data': [
         'view/purchase_order_line.xml',
