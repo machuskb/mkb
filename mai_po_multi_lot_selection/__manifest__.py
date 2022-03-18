@@ -1,6 +1,6 @@
 {
     'name': 'Purchase order multi lots selection',
-    'version': '14.2.3.4',
+    'version': '14.1.1.1',
     'category': 'Purchase Management',
     'summary': 'Purchase order multi lots selection',
     'description': """ Using this module you can create and select multiple lot in purchase order line .
