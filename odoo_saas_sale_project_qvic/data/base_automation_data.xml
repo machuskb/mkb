@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <data noupdate="1">
+        <record model="base.automation" id="automation_qvic1">
+            <field name="name">Crear tarea en proyecto desde sale order</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="active" eval="True"/>
+            <field name="state">code</field>
+            <field name="trigger">on_write</field>
+            <field name="trigger_field_ids" eval="[(4, ref('sale.field_sale_order__state'), 0)]"/>
+            <field name="filter_domain" eval="[('state','!=','draft')]"/>
+            <field name="filter_pre_domain" eval="[('state','=','draft')]"/>
+            <field name="code">
+print(record.state)
+if not record.project_id:
+  desc = 'Productos vendidos: &lt;br/&gt;'
+  for linea in record.order_line:
+    desc = desc + linea.product_id.name + '&lt;br/&gt;'
+  nuevo = env['project.task'].create({
+    'name': 'De venta ' + record.name,
+    'project_id': 3,
+    'partner_id': record.partner_id.id,
+    'stage_id': 6,
+    'description': desc,
+    })
+  record.write({'project_id': 3})
+            </field>
+        </record>
+    </data>
+</odoo>
